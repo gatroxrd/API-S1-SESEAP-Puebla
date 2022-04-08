@@ -11,7 +11,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 
 obtenerRepositorioSESEAPS1()
 {
-	
+	sudo apt install zip unzip
 	set -a
 	source <(cat parametrosConfiguracion.txt|\
 		sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
