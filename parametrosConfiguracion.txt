@@ -1,7 +1,9 @@
 apiname=CDH
 clientid=cdh
+clientLectura=cdh
+clientEscritura=cdh
 entidad=Comision de Derechos Humanos Puebla
 MONGO_USERNAME=declarausr
 MONGO_PASSWORD=declarapsw
-IP_HOSTNAME=192.168.0.215
+IP_HOSTNAME=192.168.1.215
 PORT_HOSTNAME=8095
