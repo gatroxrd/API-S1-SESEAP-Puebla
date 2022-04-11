@@ -29,7 +29,7 @@ obtenerRepositorioSESEAPS1()
 	sed -i "s/valorW/$apiname/g" appsettings.json
 	sed -i "s/valorX/$clientid/g" appsettings.json
 	sed -i "s/valorLectura/$clientLectura/g" appsettings.json
-	sed -i "s/valorEscritura/$clientEscritura/g" appsettings.jso		
+	sed -i "s/valorEscritura/$clientEscritura/g" appsettings.json		
 	sed -i "s/valorY/$IP_HOSTNAME/g" appsettings.json
 	sed -i "s/valorZ/$entidad/g" appsettings.json
 	sed -i "s/valorusr/$MONGO_USERNAME/g" appsettings.json
