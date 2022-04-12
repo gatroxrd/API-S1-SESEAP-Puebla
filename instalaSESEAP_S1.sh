@@ -51,7 +51,7 @@ obtenerRepositorioSESEAPS1()
 	sudo docker build -t dotnet -f Dockerfile .
 	echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  3 = = = = = = = = = = = = = = = = = = = = = = ="
 	echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
-	sudo docker run --name dotnet -p $PORT_HOSTNAME:80 -d dotnet
+	sudo docker run --restart always --name dotnet -p $PORT_HOSTNAME:80 -d dotnet
 	echo -e "\033[33mEn adelante usted puede abrir en cualquier navegador de su red local la API capturando la url con la ip de su equipo más el puerto ${puerto}\033[0m"
 	echo ""
 
