@@ -1,5 +1,5 @@
 apiname=CDH
-clientid=cdh
+clientid=declaraciones_pde_cdh
 clientLectura=cdh
 clientEscritura=cdh
 entidad=Comision de Derechos Humanos Puebla
