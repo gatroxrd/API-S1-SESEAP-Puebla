@@ -17,7 +17,7 @@ obtenerRepositorioSESEAPS1()
 		sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 	set +a
 	echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
-        sdo rm -rf API.S1.SESEAP
+        sudo rm -rf API.S1.SESEAP
 	mkdir API.S1.SESEAP
 	cd API.S1.SESEAP
 	curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
