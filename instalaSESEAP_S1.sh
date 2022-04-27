@@ -6,11 +6,6 @@
 
 			versionGrafica()
 				{
-						title="API de conexión S1 SESEAP"
-						prompt="Menú principal, seleccione una acción a seguir:"
-						options=("Instalación básica x paramerosConfiguracion.txt" "Modificando parametros ya instalados" "Actualiza script de instalación" "Salir")
-						zenity --info --title "Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla" --width 600 --height 100 --text "Instalación y configuración de la API que establecerá una interconexión segura entre su municipio/ente y la Plataforma Digital Nacional PDN para el Sistema de Declaraciones Patrimoniales y de Intereses S1. Proyecto de integración de tecnologías Microsoft.NET - Mongo DB - Docker"
-
 						sudo apt install whiptail -y
 
 						banderamongoHostname=0
@@ -251,11 +246,13 @@
 		clear
 		echo " Unidad de Servicios Tecnológicos y Plataforma Digital (USTPD)              Versión al 26 de abril de 2022"
 		echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + "
-		versionGrafica
-		EXITCODE=$?
-		if [ "$EXITCODE" -ne "0" ]; then
-		    #this is the catch part
+		title="API de conexión S1 SESEAP"
+		prompt="Menú principal, seleccione una acción a seguir:"
+		options=("Instalación básica x paramerosConfiguracion.txt" "Modificando parametros ya instalados" "Actualiza script de instalación" "Salir")
+		if zenity --info --title "Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla" --width 600 --height 100 --text "Instalación y configuración de la API que establecerá una interconexión segura entre su municipio/ente y la Plataforma Digital Nacional PDN para el Sistema de Declaraciones Patrimoniales y de Intereses S1. Proyecto de integración de tecnologías Microsoft.NET - Mongo DB - Docker"
+		then
+				versionGrafica
+		else
 		    versionNoGrafica
-		    exit $EXITCODE
 		fi
 		# # # # # # # # # # # # # # # #  # # # ## # # # # # # # # # # # # # # # #
