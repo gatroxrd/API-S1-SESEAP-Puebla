@@ -1,5 +1,5 @@
 apiName=CDH
-clientId=servidorespublicosDB_pde_cdh
+clientId=declaraciones_pde_cdh
 clientScopeRead=cdh
 clientScopeWrite=cdh
 clientDescription=Comisión de Derechos Humanos Puebla
@@ -7,5 +7,5 @@ mongoUsername=declarausr
 mongoPassword=declarapsw
 mongoHostname=192.168.1.215
 mongoPort=27017
-mongoDatabase=servidorespublicosDB
+mongoDatabase=declaraciones
 deploymentPort=8095
