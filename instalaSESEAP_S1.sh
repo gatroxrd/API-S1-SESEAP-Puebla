@@ -129,7 +129,7 @@
 										tempmongoDatabase=$mongoDatabase
 										mongoDatabase=$mongoDatabaseaux
 										cd ..
-										sed -i "s/"${tempmongoDatabase}"/$mongoDatabaseaux/g" parametrosConfiguracion.txt
+										sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
@@ -256,3 +256,4 @@
 		    versionNoGrafica
 		fi
 		# # # # # # # # # # # # # # # #  # # # ## # # # # # # # # # # # # # # # #
+
