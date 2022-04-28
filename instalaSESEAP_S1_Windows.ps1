@@ -38,8 +38,8 @@ Write-Output "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 
     $content = Get-Content -Path 'c:\DeclaracionesPDN\parametrosConfiguracion.txt';
     
-    $temporal = $content | Where-Object {$_ -like "apiname=*" }
-    $apiname = $temporal -replace 'apiname=',''
+    $temporal = $content | Where-Object {$_ -like "apiName=*" }
+    $apiname = $temporal -replace 'apiName=',''
   	#sed -i "s/valorW/$apiname/g" appsettings.json
     (Get-Content -path C:\DeclaracionesPDN\API.S1.SESEAP\appsettings.json -Raw) -replace 'valorW',$apiname | Set-Content .\appsettings.json
 
