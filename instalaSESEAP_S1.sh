@@ -98,8 +98,7 @@
 								exit
 								;;
 						    *)
-
-								zenity --error --text="Opción inválida, verifique por favor!"
+								zenity --error --width 300 --height 90 --text="No selecciono una opción válida del menú, verifique por favor!"
 								#Fin del case Principal
 								;;
 						    esac
@@ -256,4 +255,3 @@
 		    versionNoGrafica
 		fi
 		# # # # # # # # # # # # # # # #  # # # ## # # # # # # # # # # # # # # # #
-
