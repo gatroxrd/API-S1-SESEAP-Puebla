@@ -33,7 +33,7 @@
 						clientScopeReadaux="read:$clientScopeRead"
 						clientScopeWriteaux="write:$clientScopeWrite"
 
-						while opt=$(zenity --title="$title" --text="$prompt" --list \
+						while opt=$(zenity --title="$title" --text="$prompt" --list \ --cancel-label "Salir" \
 						                   --column="Options" "${options[@]}" --width 400 --height 200)
 						do
 						    case "$opt" in
