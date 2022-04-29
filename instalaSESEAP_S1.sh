@@ -89,9 +89,10 @@
 																#Listado de opciones a modificación
 														done
 						    ;;
-						    "${options[2]}") zenity --info --text="Se obtendrá la versión más reciente del script de instalación SESEAP"
+						    "${options[2]}") zenity --info --width 300 --height 90 --text="Se obtendrá la versión más reciente del script de instalación SESEAP"
 								clear
 								sudo curl -L -O https://raw.githubusercontent.com/gatroxrd/API-S1-SESEAP-Puebla/main/instalaSESEAP_S1.sh
+								exit
 								;;
 								"${options[3]}")
 								clear
