@@ -7,7 +7,7 @@
 			versionGrafica()
 				{
 						sudo apt install whiptail -y
-
+						executarMontado=0
 						banderamongoHostname=0
 						banderadeploymentPort=0
 						banderamongoDatabase=0
@@ -40,6 +40,7 @@
 						    "${options[0]}") zenity --info --width=350 --text="Se instalará la API con los valores predefinidos en el archivo parametrosConfiguracion.txt "
 								clear
 								zenity --success --title "Instalación exitosa!" --width 500 --height 100 --text "La instalación de la API ha concluido exitósamente, "
+								executarMontado=1
 								;;
 						    "${options[1]}")
 												title2="Modificando instalación previa"
@@ -114,6 +115,7 @@
 										cd ..
 										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
+										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderadeploymentPort -gt 0 ];
@@ -123,6 +125,7 @@
 										cd ..
 										sed -i "s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
+										executarMontado=1
 								fi
 								#Si hubo cambios en el nombre de la base de datos Mongo se toma el nuevo valor
 								if [ $banderamongoDatabase -gt 0 ];
@@ -132,6 +135,7 @@
 										cd ..
 										sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
+										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderamongoPort -gt 0 ];
@@ -141,49 +145,55 @@
 										cd ..
 										sed -i "s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
+										executarMontado=1
 								fi
 
-								# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-								sed -i "s/apiName/$apiName/g" appsettings.json
-								sed -i "s/clientId/$clientId/g" appsettings.json
-								sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
-								sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
-								sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
-								sed -i "s/clientDescription/$clientDescription/g" appsettings.json
-								sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
-								sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
-								sed -i "s/mongoPort/$mongoPort/g" appsettings.json
-								sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
-
-
-								# M O N T A N D O   L A    I M A G E N    Y   D O C K E R   .NET
-				        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-				        echo -e "\e[43mIniciando despliegue de la API Microsoft .NET\e[0m"
-
-				        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-				        echo -e "\033[33mEliminando imagen previa del contenedor Docker llamada:\033[0m"
-				        sudo docker rm -f dotnet
-				        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  2  D O C K E R = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-				        echo -e "\033[33mConstruyendo la imagen a partir del proyecto .NET\033[0m"
-				        sudo docker build -t dotnet -f Dockerfile .
-				        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  3  D E S P L I E G U E = = = = = = = = = = = = = = = = = = = = = = ="
-				        echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
-
-								if [ $banderadeploymentPort -gt 0 ];
+								if [ $executaMontado -gt 0 ];
 									then
-				        		sudo docker run --restart always --name dotnet -p $deploymentPortaux:80 -d dotnet
-									else
-									  sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
-								fi
+												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
+												sed -i "s/apiName/$apiName/g" appsettings.json
+												sed -i "s/clientId/$clientId/g" appsettings.json
+												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
+												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
+												sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
+												sed -i "s/clientDescription/$clientDescription/g" appsettings.json
+												sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
+												sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
+												sed -i "s/mongoPort/$mongoPort/g" appsettings.json
+												sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
 
-				        echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
-				        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-								echo -e "\033[32m ${mongoHostname}:${deploymentPort} \033[0m"
-								echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-								echo -e "\033[32m ¡F E L I C I D A D E S! \033[0m"
-								echo -e "\033[32m API de conexión de ${clientDescription} --> SESEAP establecida :) \033[0m"
+												# M O N T A N D O   L A    I M A G E N    Y   D O C K E R   .NET
+								        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+								        echo -e "\e[43mIniciando despliegue de la API Microsoft .NET\e[0m"
+
+								        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+								        echo -e "\033[33mEliminando imagen previa del contenedor Docker llamada:\033[0m"
+								        sudo docker rm -f dotnet
+								        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  2  D O C K E R = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+								        echo -e "\033[33mConstruyendo la imagen a partir del proyecto .NET\033[0m"
+								        sudo docker build -t dotnet -f Dockerfile .
+								        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  3  D E S P L I E G U E = = = = = = = = = = = = = = = = = = = = = = ="
+								        echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
+
+												if [ $banderadeploymentPort -gt 0 ];
+													then
+								        		sudo docker run --restart always --name dotnet -p $deploymentPortaux:80 -d dotnet
+													else
+													  sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+												fi
+
+								        echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
+								        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+												echo -e "\033[32m ${mongoHostname}:${deploymentPort} \033[0m"
+												echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+												echo -e "\033[32m ¡F E L I C I D A D E S! \033[0m"
+												echo -e "\033[32m API de conexión de ${clientDescription} --> SESEAP establecida :) \033[0m"
 
 								#FINALIZANDO EL SCRIPT
+								else
+									  clear
+										exit
+								fi
 								done
 				 }
 		versionNoGrafica()
