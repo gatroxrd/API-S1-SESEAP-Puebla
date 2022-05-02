@@ -55,8 +55,8 @@
 												options2=("IP del equipo de cómputo" "Puerto de publicación de la API" "Nombre de la Base de Datos Mongo" "Puerto de operación de Mongo")
 												ans=$(zenity --question --width 500 --height 100 --title 'Pregunta' \
 															--text 'Desea que previo a estos cambios, actualicemos el proyecto API .NET' \
-															--ok-label "No, gracias" \
-															--extra-button "Si, actualiza" \
+															--no-label "No, gracias" \
+															--ok-label  "Si, actualiza" \
 															)
 
 															if [[ $ans = "Si, actualiza" ]]
