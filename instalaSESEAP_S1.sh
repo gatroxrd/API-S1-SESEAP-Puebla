@@ -3,6 +3,23 @@
 # Unidad de Servicios Tecnolǵicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
+			descargaAPINet()
+			{
+				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
+				sudo apt install zip unzip
+				echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
+				sudo rm -rf API.S1.SESEAP
+				mkdir API.S1.SESEAP
+				cd API.S1.SESEAP
+				curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
+				echo -e "\033[33mDescomprimiendo archivos\033[0m"
+
+				unzip -o PDEPuebla.S1.PDN.zip
+				echo -e "\033[33mEliminando archivo .zip\033[0m"
+				rm  PDEPuebla.S1.PDN.zip
+				clear
+			}
+
 
 			versionGrafica()
 				{
@@ -12,32 +29,22 @@
 						banderadeploymentPort=0
 						banderamongoDatabase=0
 						banderamongoPort=0
-						#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
-		        sudo apt install zip unzip
+
 		        set -a
 		        source <(cat parametrosConfiguracion.txt|\
 		                sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 		        set +a
 						clear
-		        echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
-		        sudo rm -rf API.S1.SESEAP
-		        mkdir API.S1.SESEAP
-		        cd API.S1.SESEAP
-		        curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
-		        echo -e "\033[33mDescomprimiendo archivos\033[0m"
 
-		        unzip -o PDEPuebla.S1.PDN.zip
-		        echo -e "\033[33mEliminando archivo .zip\033[0m"
-		        rm  PDEPuebla.S1.PDN.zip
-						clear
 						clientScopeReadaux="read:$clientScopeRead"
 						clientScopeWriteaux="write:$clientScopeWrite"
 
-						while opt=$(zenity --title="$title" --text="$prompt" --list \ --cancel-label "Salir" \
-						                   --column="Options" "${options[@]}" --width 400 --height 200)
+						while opt=$(zenity --title="$title" --text="$prompt" --list \
+						                   --column="Options" "${options[@]}" --width 400 --height 200 --ok-label "Ejecutar" --cancel-label "Salir" )
 						do
 						    case "$opt" in
 						    "${options[0]}") zenity --info --width=350 --text="Se instalará la API con los valores predefinidos en el archivo parametrosConfiguracion.txt "
+								descargaAPINet
 								clear
 								zenity --success --title "Instalación exitosa!" --width 500 --height 100 --text "La instalación de la API ha concluido exitósamente, "
 								executarMontado=1
@@ -46,9 +53,19 @@
 												title2="Modificando instalación previa"
 												prompt2="Indique el elemento a personalizar/modificar: "
 												options2=("IP del equipo de cómputo" "Puerto de publicación de la API" "Nombre de la Base de Datos Mongo" "Puerto de operación de Mongo")
+												ans=$(zenity --question --width 500 --height 100 --title 'Pregunta' \
+															--text 'Desea que previo a estos cambios, actualicemos el proyecto API .NET' \
+															--ok-label "No, gracias" \
+															--extra-button "Si, actualiza" \
+															)
+
+															if [[ $ans = "Si, actualiza" ]]
+																	then
+																				descargaAPINet
+															fi
 
 															#Listado de opciones a modificación
-															while opt=$(zenity --title="$title2" --text="$prompt2" --height 200 --list \
+															while opt=$(zenity --title="$title2" --text="$prompt2" --height 200  --ok-label "Ejecutar" --cancel-label "Atrás" --list \
 															                   --column="Options" "${options2[@]}")
 															do
 															    case "$opt" in
@@ -96,12 +113,8 @@
 								sudo curl -L -O https://raw.githubusercontent.com/gatroxrd/API-S1-SESEAP-Puebla/main/instalaSESEAP_S1.sh
 								exit
 								;;
-								"${options[3]}")
-								clear
-								exit
-								;;
 						    *)
-								zenity --error --width 300 --height 90 --text="No selecciono una opción válida del menú, verifique por favor!"
+								zenity --error --width 300 --height 90 --text="No selecciono una opción válida del menú, ejecute de nuevo el script por favor."
 								#Fin del case Principal
 								;;
 						    esac
@@ -259,7 +272,7 @@
 		echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + "
 		title="API de conexión S1 SESEAP"
 		prompt="Menú principal, seleccione una acción a seguir:"
-		options=("Instalación básica x paramerosConfiguracion.txt" "Modificando parametros ya instalados" "Actualiza script de instalación" "Salir")
+		options=("Instalación básica x paramerosConfiguracion.txt" "Modificando parametros ya instalados" "Actualiza script de instalación" )
 		if zenity --info --title "Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla" --width 600 --height 100 --text "Instalación y configuración de la API que establecerá una interconexión segura entre su municipio/ente y la Plataforma Digital Nacional PDN para el Sistema de Declaraciones Patrimoniales y de Intereses S1. Proyecto de integración de tecnologías Microsoft.NET - Mongo DB - Docker"
 		then
 				versionGrafica
