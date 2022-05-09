@@ -8,4 +8,4 @@ mongoPassword=declarapsw
 mongoHostname=192.168.0.109
 mongoPort=27017
 mongoDatabase=declaraciones
-deploymentPort=8097
+deploymentPort=8098
