@@ -169,16 +169,16 @@
 									then
 												cd /API.S1.SESEAP
 												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-												sudo sed -i "s/apiName/$apiName/g" appsettings.json
-												sudo sed -i "s/clientId/$clientId/g" appsettings.json
-												sudo sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
-												sudo sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
-												sudo sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
-												sudo sed -i "s/clientDescription/$clientDescription/g" appsettings.json
-												sudo sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
-												sudo sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
-												sudo sed -i "s/mongoPort/$mongoPort/g" appsettings.json
-												sudo sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
+												sed -i "s/apiName/$apiName/g" appsettings.json
+												sed -i "s/clientId/$clientId/g" appsettings.json
+												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
+												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
+												sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
+												sed -i "s/clientDescription/$clientDescription/g" appsettings.json
+												sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
+												sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
+												sed -i "s/mongoPort/$mongoPort/g" appsettings.json
+												sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
 
 												# M O N T A N D O   L A    I M A G E N    Y   D O C K E R   .NET
 								        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
