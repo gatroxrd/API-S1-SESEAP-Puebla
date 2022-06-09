@@ -131,7 +131,7 @@
 										mongoHostname=$mongoHostnameaux
 										cd ..
 										chmod -R 777 .
-										sudo sed -i.txt "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										sudo sed  "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
