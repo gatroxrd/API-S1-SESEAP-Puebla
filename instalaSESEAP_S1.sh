@@ -62,6 +62,8 @@
 															if [[ $ans = "Si, actualiza" ]]
 																	then
 																				descargaAPINet
+																	else
+																				
 															fi
 
 															#Listado de opciones a modificación
@@ -127,7 +129,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" ./parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
