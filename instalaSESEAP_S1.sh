@@ -18,7 +18,6 @@
 				echo -e "\033[33mEliminando archivo .zip\033[0m"
 				rm  PDEPuebla.S1.PDN.zip
 				clear
-				cd ..
 			}
 
 
@@ -126,6 +125,7 @@
 									then
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
+										cd /API.S1.SESEAP
 										cd ..
 										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
