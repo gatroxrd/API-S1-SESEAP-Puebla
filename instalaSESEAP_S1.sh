@@ -123,13 +123,12 @@
 
 								#S I   H U B O  P E R S O N A L I Z A C I Ó N    D E   V A L O R E S    A Q U I   S E   A L M A C E N A N
 								#Si hubo cambios en la Ip del equipo se toma el nuevo valor
-								ls
 								if [ $banderamongoHostname -gt 0 ];
 									then
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										find . -type f -iname parametrosConfiguracion.txt | xargs sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										find . -type f -name parametrosConfiguracion.txt | xargs sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
