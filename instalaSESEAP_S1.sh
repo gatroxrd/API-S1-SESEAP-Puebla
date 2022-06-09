@@ -127,7 +127,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										find ~ -name parametrosConfiguracion.txt | xargs sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd API.S1.SESEAP
 										executarMontado=1
 								fi
@@ -165,7 +165,7 @@
 								if [ $executarMontado -gt 0 ];
 									then
 												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-												sed -i "s/apiName/$apiName/g" appsettings.json
+												find ~ -name appsettings.json | xargs sed -i "s/apiName/$apiName/g" appsettings.json
 												sed -i "s/clientId/$clientId/g" appsettings.json
 												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
 												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
