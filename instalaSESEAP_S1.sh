@@ -125,6 +125,7 @@
 									then
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
+										
 										cd /API.S1.SESEAP
 										cd ..
 										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
