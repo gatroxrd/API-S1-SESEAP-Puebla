@@ -47,7 +47,7 @@
 						    "${options[0]}") zenity --info --width=350 --text="Se instalará la API con los valores predefinidos en el archivo parametrosConfiguracion.txt "
 								descargaAPINet
 								clear
-								zenity --success --title "Instalación exitosa!" --width 500 --height 100 --text "La instalación de la API ha concluido exitósamente, "
+								#zenity --success --title "Instalación exitosa!" --width 500 --height 100 --text "La instalación de la API ha concluido exitósamente, "
 								executarMontado=1
 								;;
 						    "${options[1]}")
