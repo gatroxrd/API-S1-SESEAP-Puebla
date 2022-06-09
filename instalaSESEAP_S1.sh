@@ -63,7 +63,7 @@
 																	then
 																		descargaAPINet
 																	else
-																		echo -e "\e[43mNo se actualizará el proyecto API.Net\e[0m"		
+																		echo -e "\e[43m          No se actualizará el proyecto API.Net            \e[0m"		
 															fi
 
 															#Listado de opciones a modificación
@@ -120,7 +120,7 @@
 								#Fin del case Principal
 								;;
 						    esac
-
+								echo -e "\e[43m          Actualizando valores en archivo appsettings.json            \e[0m"
 								#S I   H U B O  P E R S O N A L I Z A C I Ó N    D E   V A L O R E S    A Q U I   S E   A L M A C E N A N
 								#Si hubo cambios en la Ip del equipo se toma el nuevo valor
 								if [ $banderamongoHostname -gt 0 ];
@@ -128,7 +128,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										sudo find . -type f -iname parametrosConfiguracion.txt sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
