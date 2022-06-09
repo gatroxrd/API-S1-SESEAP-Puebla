@@ -128,7 +128,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										find . -type f -name parametrosConfiguracion.txt | xargs sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										find . -type f -name parametrosConfiguracion.txt | xargs sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
@@ -138,7 +138,7 @@
 										tempdeploymentPort=$deploymentPort
 										deploymentPort=$deploymentPortaux
 										cd ..
-										sed -i "s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
+										sudo sed -i "s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
@@ -148,7 +148,7 @@
 										tempmongoDatabase=$mongoDatabase
 										mongoDatabase=$mongoDatabaseaux
 										cd ..
-										sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
+										sudo sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
@@ -158,7 +158,7 @@
 										tempmongoPort=$mongoPort
 										mongoPort=$mongoPortaux
 										cd ..
-										sed -i "s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
+										sudo sed -i "s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
@@ -167,16 +167,16 @@
 									then
 												cd /API.S1.SESEAP
 												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-												sed -i "s/apiName/$apiName/g" appsettings.json
-												sed -i "s/clientId/$clientId/g" appsettings.json
-												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
-												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
-												sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
-												sed -i "s/clientDescription/$clientDescription/g" appsettings.json
-												sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
-												sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
-												sed -i "s/mongoPort/$mongoPort/g" appsettings.json
-												sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
+												sudo sed -i "s/apiName/$apiName/g" appsettings.json
+												sudo sed -i "s/clientId/$clientId/g" appsettings.json
+												sudo sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
+												sudo sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
+												sudo sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
+												sudo sed -i "s/clientDescription/$clientDescription/g" appsettings.json
+												sudo sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
+												sudo sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
+												sudo sed -i "s/mongoPort/$mongoPort/g" appsettings.json
+												sudo sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
 
 												# M O N T A N D O   L A    I M A G E N    Y   D O C K E R   .NET
 								        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
