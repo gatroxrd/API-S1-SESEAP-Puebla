@@ -164,8 +164,9 @@
 								
 								if [ $executarMontado -gt 0 ];
 									then
+												cd /API.S1.SESEAP
 												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-												find ~ -name "API.S1.SESEAP" | xargs sed -i "s/apiName/$apiName/g" appsettings.json
+												sed -i "s/apiName/$apiName/g" appsettings.json
 												sed -i "s/clientId/$clientId/g" appsettings.json
 												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
 												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
