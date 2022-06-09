@@ -9,7 +9,7 @@
 				sudo apt install zip unzip
 				echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
 				sudo rm -rf API.S1.SESEAP
-				chmod -R 777 .
+				
 				mkdir API.S1.SESEAP
 				cd API.S1.SESEAP
 				curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
@@ -226,6 +226,7 @@
 								clear
 								echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
 								sudo rm -rf API.S1.SESEAP
+								chmod -R 777 .
 								mkdir API.S1.SESEAP
 								cd API.S1.SESEAP
 								curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
