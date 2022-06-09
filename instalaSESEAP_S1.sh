@@ -61,7 +61,7 @@
 
 															if [[ $ans = "Si, actualiza" ]]
 																	then
-																				descargaAPINet
+																		descargaAPINet
 																	else
 																		echo -e "\e[43mNo se actualizará el proyecto API.Net\e[0m"		
 															fi
@@ -128,7 +128,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										find . -type f -name parametrosConfiguracion.txt | xargs sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
+										find . -type f -name parametrosConfiguracion.txt sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
