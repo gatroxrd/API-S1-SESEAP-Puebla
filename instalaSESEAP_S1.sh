@@ -128,7 +128,7 @@
 										mongoHostname=$mongoHostnameaux
 										cd ..
 										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
-										cd API.S1.SESEAP
+										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
@@ -138,7 +138,7 @@
 										deploymentPort=$deploymentPortaux
 										cd ..
 										sed -i "s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
-										cd API.S1.SESEAP
+										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
 								#Si hubo cambios en el nombre de la base de datos Mongo se toma el nuevo valor
@@ -148,7 +148,7 @@
 										mongoDatabase=$mongoDatabaseaux
 										cd ..
 										sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
-										cd API.S1.SESEAP
+										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
@@ -158,7 +158,7 @@
 										mongoPort=$mongoPortaux
 										cd ..
 										sed -i "s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
-										cd API.S1.SESEAP
+										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
 								
