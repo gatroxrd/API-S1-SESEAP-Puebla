@@ -125,10 +125,11 @@
 								#Si hubo cambios en la Ip del equipo se toma el nuevo valor
 								if [ $banderamongoHostname -gt 0 ];
 									then
+										echo -e "\e[43m Actualizando Hostname  \e[0m"
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" find . -type -iname "parametrosConfiguracion.txt"
+										sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
