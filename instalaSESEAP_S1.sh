@@ -129,7 +129,7 @@
 										tempmongoHostname=$mongoHostname
 										mongoHostname=$mongoHostnameaux
 										cd ..
-										sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" ./parametrosConfiguracion.txt
+										find . -type f -iname parametrosConfiguracion.txt | xargs sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										cd /API.S1.SESEAP
 										executarMontado=1
 								fi
