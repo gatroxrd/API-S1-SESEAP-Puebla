@@ -3,24 +3,26 @@
 # Unidad de Servicios Tecnolǵicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
+#Actualizado al 13 Junio 2022
 			descargaAPINet()
 			{
 				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
 				sudo apt install zip unzip
 				echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
 				sudo rm -rf API.S1.SESEAP
-				
+
 				mkdir API.S1.SESEAP
+				sudo chmod -R 777 API.S1.SESEAP
 				cd API.S1.SESEAP
 				curl -L -O https://github.com/gatroxrd/API-S1-SESEAP-Puebla/raw/main/PDEPuebla.S1.PDN.zip --output API.S1.SESEAP/PDEPuebla.S1.PDN.zip
 				echo -e "\033[33mDescomprimiendo archivos\033[0m"
 
 				unzip -o PDEPuebla.S1.PDN.zip
 				echo -e "\033[33mEliminando archivo .zip\033[0m"
-				rm  PDEPuebla.S1.PDN.zip
+				rm  -rf PDEPuebla.S1.PDN.zip
+				cd ..
 				clear
 			}
-
 
 			versionGrafica()
 				{
@@ -30,12 +32,29 @@
 						banderadeploymentPort=0
 						banderamongoDatabase=0
 						banderamongoPort=0
+						preexisteSESEAP=0
+						cd .
+						#Crea carpeta de operaciones seseap
+						sudo rm -rf SESEAP
+						mkdir SESEAP
+						sudo chmod -R 777 SESEAP
+						FILE=/SESEAP/parametrosConfiguracion.txt
+						if test -f "$FILE"; then
+						    echo "$FILE ya existe."
+								cd SESEAP
+							else
+								cp -a parametrosConfiguracion.txt SESEAP/
+								cd SESEAP
+						fi
 
 		        set -a
 		        source <(cat parametrosConfiguracion.txt|\
 		                sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 		        set +a
+						ls
 						clear
+
+						#Nos quedamos en la carpeta de seseap
 
 						clientScopeReadaux="read:$clientScopeRead"
 						clientScopeWriteaux="write:$clientScopeWrite"
@@ -46,7 +65,6 @@
 						    case "$opt" in
 						    "${options[0]}") zenity --info --width=350 --text="Se instalará la API con los valores predefinidos en el archivo parametrosConfiguracion.txt "
 								descargaAPINet
-								clear
 								#zenity --success --title "Instalación exitosa!" --width 500 --height 100 --text "La instalación de la API ha concluido exitósamente, "
 								executarMontado=1
 								;;
@@ -54,18 +72,7 @@
 												title2="Modificando instalación previa"
 												prompt2="Indique el elemento a personalizar/modificar: "
 												options2=("IP del equipo de cómputo" "Puerto de publicación de la API" "Nombre de la Base de Datos Mongo" "Puerto de operación de Mongo")
-												ans=$(zenity --question --width 500 --height 100 --title 'Pregunta' \
-															--text 'Desea que previo a estos cambios, actualicemos el proyecto API .NET' \
-															--cancel-label "No, gracias" \
-															--ok-label  "Si, actualiza" \
-															)
-
-															if [[ $ans = "Si, actualiza" ]]
-																	then
-																		descargaAPINet
-																	else
-																		echo -e "\e[43m          No se actualizará el proyecto API.Net            \e[0m"		
-															fi
+												descargaAPINet
 
 															#Listado de opciones a modificación
 															while opt=$(zenity --title="$title2" --text="$prompt2" --height 200  --ok-label "Ejecutar" --cancel-label "Atrás" --list \
@@ -121,65 +128,85 @@
 								#Fin del case Principal
 								;;
 						    esac
-								echo -e "\e[43m          Actualizando valores en archivo appsettings.json            \e[0m"
+
+								#-- - - - - - - - - - - - -  - - -  - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - -
+								#Se continua proceso principal
+								echo -e "\e[43m Actualizando valores en archivo appsettings.json            \e[0m"
 								#S I   H U B O  P E R S O N A L I Z A C I Ó N    D E   V A L O R E S    A Q U I   S E   A L M A C E N A N
 								#Si hubo cambios en la Ip del equipo se toma el nuevo valor
+								#cat parametrosConfiguracion.txt | sed ':a; N; 1,50ba; D'
 								if [ $banderamongoHostname -gt 0 ];
 									then
 										echo -e "\e[43m           Actualizando Hostname  \e[0m"
+										#Valor original en parametrosConfiguracion.txt
 										tempmongoHostname=$mongoHostname
+
+										#Nuevo valor capturado en pantalla
 										mongoHostname=$mongoHostnameaux
-										cd ..
-										sudo sed -i "s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
-										cd /API.S1.SESEAP
+										echo -e "\033[32m Se substituirá ${tempmongoHostname} por el nuevo valor ${mongoHostname} \033[0m"
+										chmod -R 777 parametrosConfiguracion.txt
+										sudo sed -i "8 s/"${tempmongoHostname}"/$mongoHostnameaux/g" parametrosConfiguracion.txt
 										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderadeploymentPort -gt 0 ];
 									then
+										echo -e "\e[43m           Actualizando puesrto de publicación  \e[0m"
 										tempdeploymentPort=$deploymentPort
 										deploymentPort=$deploymentPortaux
-										cd ..
-										sudo sed -i "s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
-										cd /API.S1.SESEAP
+										#cd ..
+										echo -e "\033[32m Se substituirá ${tempdeploymentPort} por el nuevo valor ${deploymentPort} \033[0m"
+										chmod -R 777 parametrosConfiguracion.txt
+										sudo sed -i "11 s/"${tempdeploymentPort}"/$deploymentPortaux/g" parametrosConfiguracion.txt
+										echo -e "\033[32m Se substituirá ${tempdeploymentPort} por el nuevo valor ${deploymentPortaux} \033[0m"
 										executarMontado=1
 								fi
 								#Si hubo cambios en el nombre de la base de datos Mongo se toma el nuevo valor
 								if [ $banderamongoDatabase -gt 0 ];
 									then
+										echo -e "\e[43m           Actualizando nombre de la base de datos  \e[0m"
 										tempmongoDatabase=$mongoDatabase
 										mongoDatabase=$mongoDatabaseaux
-										cd ..
-										sudo sed -i "s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
-										cd /API.S1.SESEAP
+										#cd ..
+										chmod -R 777 parametrosConfiguracion.txt
+										sudo sed -i "10 s/"mongoDatabase=${tempmongoDatabase}"/mongoDatabase=$mongoDatabaseaux/g" parametrosConfiguracion.txt
+										echo -e "\033[32m Se substituirá ${tempmongoDatabase} por el nuevo valor ${mongoDatabaseaux} \033[0m"
 										executarMontado=1
 								fi
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderamongoPort -gt 0 ];
 									then
+										echo -e "\e[43m           Actualizando puerto de MongoDb  \e[0m"
 										tempmongoPort=$mongoPort
 										mongoPort=$mongoPortaux
-										cd ..
-										sudo sed -i "s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
-										cd /API.S1.SESEAP
+										#cd ..
+										chmod -R 777 parametrosConfiguracion.txt
+										sudo sed -i "9 s/"${tempmongoPort}"/$mongoPortaux/g" parametrosConfiguracion.txt
+										echo -e "\033[32m Se substituirá ${tempmongoPort} por el nuevo valor ${mongoPortaux} \033[0m"
 										executarMontado=1
 								fi
-								
+
+								#Etapa final de executarMontado
+								#- - - - - - - - - - - - -  - - - - - - - - -- - - - - - - - - - - - - -  - - - - -- - - - -- - - -
 								if [ $executarMontado -gt 0 ];
 									then
-												
-												chmod -R 777 .
+												cd API.S1.SESEAP
+
+												chmod -R 777 appsettings.json
 												# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
 												sed -i "s/apiName/$apiName/g" appsettings.json
+												#--echo -e "\033[32m Posible valor en appsettins.json ${tempmongoHostname} por el nuevo ${apiName} \033[0m"
 												sed -i "s/clientId/$clientId/g" appsettings.json
+												#echo -e "\033[32m {clienId} por ${clientId} \033[0m"
 												sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
 												sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
-												sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
 												sed -i "s/clientDescription/$clientDescription/g" appsettings.json
 												sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
 												sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
+												#- - - - - --  - - - - - - - - - - - - - - - - - - - - - - -
 												sed -i "s/mongoPort/$mongoPort/g" appsettings.json
 												sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
+												sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
 
 												# M O N T A N D O   L A    I M A G E N    Y   D O C K E R   .NET
 								        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
@@ -208,6 +235,9 @@
 												echo -e "\033[32m ¡F E L I C I D A D E S! \033[0m"
 												echo -e "\033[32m API de conexión de ${clientDescription} --> SESEAP establecida :) \033[0m"
 
+												#Actualiza al archivo origen en la ubicacion superior
+												cd ..
+												cp -a parametrosConfiguracion.txt ../
 								#FINALIZANDO EL SCRIPT
 								else
 									  clear
@@ -240,7 +270,7 @@
 								clientScopeReadaux="read:$clientScopeRead"
 								clientScopeWriteaux="write:$clientScopeWrite"
 								# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-								cd /API.S1.SESEAP
+								cd API.S1.SESEAP
 								sed -i "s/apiName/$apiName/g" appsettings.json
 								sed -i "s/clientId/$clientId/g" appsettings.json
 								sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
@@ -255,13 +285,13 @@
 								echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 								echo -e "\e[43mIniciando despliegue de la API Microsoft .NET\e[0m"
 
-								echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+								echo "= = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = ="
 								echo -e "\033[33mEliminando imagen previa del contenedor Docker llamada:\033[0m"
 								sudo docker rm -f dotnet
-								echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  2  D O C K E R = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+								echo "= = = = = = = = = = = = = = = = = = = = = P A S O  2  D O C K E R = = = = = = = = = = = = = = = = = = = = = ="
 								echo -e "\033[33mConstruyendo la imagen a partir del proyecto .NET\033[0m"
 								sudo docker build -t dotnet -f Dockerfile .
-								echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  3  D E S P L I E G U E = = = = = = = = = = = = = = = = = = = = = = ="
+								echo "= = = = = = = = = = = = = = = = = = = = = P A S O  3  D E S P L I E G U E = = = = = = = = = = = = = = = = = ="
 								echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
 								sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 								echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
@@ -277,7 +307,7 @@
 		#
 		clear
 		echo " Unidad de Servicios Tecnológicos y Plataforma Digital (USTPD)              Versión al 26 de abril de 2022"
-		echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + "
+		echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + "
 		title="API de conexión S1 SESEAP"
 		prompt="Menú principal, seleccione una acción a seguir:"
 		options=("Instalación básica x paramerosConfiguracion.txt" "Modificando parametros ya instalados" "Actualiza script de instalación" )
