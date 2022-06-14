@@ -93,6 +93,7 @@
 																		#zenity --info --text="Capture el nuevo puerto de la API."
 																		banderadeploymentPort=1
 																    deploymentPortaux=$(whiptail --title "Nuevo puerto de publicación API" --inputbox "Escriba el nuevo puerto de publicación para la API" 8 40 3>&1 1>&2 2>&3)
+																		zenity --info --title "Modificando el puerto de publicación de la API" --width 500 --height 100 --text "El puerto actual de la API ${deploymentPort} será modificado al puerto ${deploymentPortaux}"
 																		#sed -i "s/deploymentPort/$deploymentPortaux/g" appsettings.json
 																		#Modificando el puerto de publicación de la API
 																		;;
@@ -100,6 +101,7 @@
 																		#Modificando el nombre de la base de datos Mongo
 																		#zenity --info --text="Capture el nuevo nombre de la Base de Datos Mongo."
 																    mongoDatabaseaux=$(whiptail --title "Nuevo nombre de la BD Mongo" --inputbox "Escriba el nuevo nombre de la base de datos Mongo" 8 40 3>&1 1>&2 2>&3)
+																		zenity --info --title "Modificando el nombre de la base de datos" --width 500 --height 100 --text "El nombre actual de la base de datos ${mongoDatabase} será modificado por ${mongoDatabaseaux}"
 																		#sed -i "s/mongoDatabase/$mongoDatabaseaux/g" appsettings.json
 																		banderamongoDatabase=1
 																		#Modificando el nombre de la base de datos Mongo
@@ -108,6 +110,7 @@
 																		#Modificando el número de puerto de la base de datos Mongo
 																		#zenity --info --text="Capture el puerto asignado a la Base de Datos Mongo."
 																    mongoPortaux=$(whiptail --title "Nuevo puerto de comunicación de la BD Mongo" --inputbox "Escriba el nuevo número de puerto de comunicación la base de datos Mongo" 8 40 3>&1 1>&2 2>&3)
+																		zenity --info --title "Modificando el puerto de comunicación de Mongo DB" --width 500 --height 100 --text "El puerto de comunicaciones actual de MongoDb  ${mongoPort} será modificado al puerto ${mongoPortaux}"
 																		#sed -i "s/mongoPort/$mongoPortaux/g" appsettings.json
 																		banderamongoPort=1
 																		;;
@@ -137,7 +140,7 @@
 								#cat parametrosConfiguracion.txt | sed ':a; N; 1,50ba; D'
 								if [ $banderamongoHostname -gt 0 ];
 									then
-										echo -e "\e[43m           Actualizando Hostname  \e[0m"
+										echo -e "\e[43m Actualizando Hostname  \e[0m"
 										#Valor original en parametrosConfiguracion.txt
 										tempmongoHostname=$mongoHostname
 
@@ -151,7 +154,7 @@
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderadeploymentPort -gt 0 ];
 									then
-										echo -e "\e[43m           Actualizando puesrto de publicación  \e[0m"
+										echo -e "\e[43m Actualizando el puerto de publicación de la API \e[0m"
 										tempdeploymentPort=$deploymentPort
 										deploymentPort=$deploymentPortaux
 										#cd ..
@@ -164,7 +167,7 @@
 								#Si hubo cambios en el nombre de la base de datos Mongo se toma el nuevo valor
 								if [ $banderamongoDatabase -gt 0 ];
 									then
-										echo -e "\e[43m           Actualizando nombre de la base de datos  \e[0m"
+										echo -e "\e[43m Actualizando el nombre de la base de datos MongoDb \e[0m"
 										tempmongoDatabase=$mongoDatabase
 										mongoDatabase=$mongoDatabaseaux
 										#cd ..
@@ -176,7 +179,7 @@
 								#Si hubo cambios en el puerto de despliege de la API se toma el nuevo valor
 								if [ $banderamongoPort -gt 0 ];
 									then
-										echo -e "\e[43m           Actualizando puerto de MongoDb  \e[0m"
+										echo -e "\e[43m Actualizando el puerto de comuncaciones de MongoDb  \e[0m"
 										tempmongoPort=$mongoPort
 										mongoPort=$mongoPortaux
 										#cd ..
