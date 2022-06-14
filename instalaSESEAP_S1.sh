@@ -56,8 +56,8 @@
 
 						#Nos quedamos en la carpeta de seseap
 
-						clientScopeReadaux="read:$clientScopeRead"
-						clientScopeWriteaux="write:$clientScopeWrite"
+						clientScopeReadaux="$clientScopeRead"
+						clientScopeWriteaux="$clientScopeWrite"
 
 						while opt=$(zenity --title="$title" --text="$prompt" --list \
 						                   --column="Options" "${options[@]}" --width 400 --height 200 --ok-label "Ejecutar" --cancel-label "Salir" )
