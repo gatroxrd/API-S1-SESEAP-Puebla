@@ -51,8 +51,8 @@
 		        source <(cat parametrosConfiguracion.txt|\
 		                sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 		        set +a
-						ls
-						clear
+						#ls
+						#clear
 
 						#Nos quedamos en la carpeta de seseap
 
