@@ -1,4 +1,4 @@
-version: '3'
+version: '1'
 services:
   webapp:
     build:
@@ -6,4 +6,4 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - 8080:80
+      - 8095:80
