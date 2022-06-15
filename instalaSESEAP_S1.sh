@@ -224,11 +224,14 @@
 								        echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  3  D E S P L I E G U E = = = = = = = = = = = = = = = = = = = = = = ="
 								        echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
 
+												#Levantado servicios definidos para la imagen dotnet
+												sudo docker-compose up
+
 												if [ $banderadeploymentPort -gt 0 ];
 													then
 								        		sudo docker run --restart always --name dotnet -p $deploymentPortaux:80 -d dotnet
 													else
-													  sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+													  sudo docker run --restart always -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
 												fi
 
 								        echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
