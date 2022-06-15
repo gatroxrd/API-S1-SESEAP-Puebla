@@ -232,7 +232,7 @@
 								        		sudo docker run --restart always --name dotnet -p $deploymentPortaux:80 -d dotnet
 													else
 													  #sudo docker run --restart always --rm -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
-														sudo docker run --dns 8.8.8.8 --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
+														sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
 												fi
 
 								        echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
