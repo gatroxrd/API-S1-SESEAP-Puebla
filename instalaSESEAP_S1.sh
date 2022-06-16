@@ -225,7 +225,7 @@
 								        echo -e "\033[33mID de la imagen dentro del contenedor Docker es:\033[0m"
 
 												#Levantado servicios definidos para la imagen dotnet
-												sudo docker-compose up
+												#sudo docker-compose up
 
 												if [ $banderadeploymentPort -gt 0 ];
 													then
