@@ -1,9 +1,15 @@
 version: '1'
 services:
-        mongodb:
-        image: mongo
+        web:
+        container_name: dotnet
+        built: ./
         ports:
-            - 27017:27017
+            - "27017:27017"
         environment:
-            - MONGO_INITDB_ROOT_USERNAME=declarausr
-            - MONGO_INITDB_ROOT_PASSWORD=declarapsw
+            - MONGODB_USERNAME=declarausr
+            - MONGODB_PASSWORD=declarapsw
+            - MONGODB_DATABASE=declaraciones
+        depends_on:
+        - mongo
+        links:
+        - mongo
