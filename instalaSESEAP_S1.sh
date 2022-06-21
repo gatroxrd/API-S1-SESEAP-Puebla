@@ -262,7 +262,7 @@
 								source <(cat parametrosConfiguracion.txt|\
 												sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 								set +a
-								clear
+								#clear
 								echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
 								sudo rm -rf API.S1.SESEAP
 								chmod -R 777 .
@@ -274,7 +274,7 @@
 								unzip -o PDEPuebla.S1.PDN.zip
 								echo -e "\033[33mEliminando archivo .zip\033[0m"
 								rm  PDEPuebla.S1.PDN.zip
-								clear
+								#clear
 								clientScopeReadaux="read:$clientScopeRead"
 								clientScopeWriteaux="write:$clientScopeWrite"
 								# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
