@@ -236,7 +236,11 @@
 													else
 													#sudo docker run --restart always --rm -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
 													#sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
+<<<<<<< HEAD
 												sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
+=======
+												sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet  
+>>>>>>> b380637286be01c6f4c81ccff56ff27d65e1dfad
 												fi
 
 								        echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
@@ -266,7 +270,7 @@
 								source <(cat parametrosConfiguracion.txt|\
 												sed -e '/^#/d;/^\s*$/d' -e "s/'/'\\\''/g" -e "s/=\(.*\)/='\1'/g")
 								set +a
-								clear
+								#clear
 								echo -e "\e[43mIniciando descarga del proyecto .NET del repositorio GitHub de USTPD-SESEAP\e[0m"
 								sudo rm -rf API.S1.SESEAP
 								chmod -R 777 .
@@ -278,7 +282,7 @@
 								unzip -o PDEPuebla.S1.PDN.zip
 								echo -e "\033[33mEliminando archivo .zip\033[0m"
 								rm  PDEPuebla.S1.PDN.zip
-								clear
+								#clear
 								clientScopeReadaux="read:$clientScopeRead"
 								clientScopeWriteaux="write:$clientScopeWrite"
 								# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
