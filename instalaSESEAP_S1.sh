@@ -412,7 +412,7 @@
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[32m ${mongoHostname}:${deploymentPort} \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\033[32m ¡F E L I C I D A D E S! \033[0m"
+					echo -e "\e[41m ¡F E L I C I D A D E S! \e[0m"
 					echo -e "\033[32m API de conexión de ${clientDescription} --> SESEAP establecida :) \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo "Soporte y sugerencias al correo: puebladeclara@seseap.puebla.gob.mx"
