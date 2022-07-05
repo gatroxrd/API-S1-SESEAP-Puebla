@@ -237,7 +237,7 @@
 													#sudo docker run --restart always --rm -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
 													#sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
 												#sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
-												sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet  
+												sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
 
 												fi
 
@@ -398,15 +398,24 @@
 					#Levantado servicios definidos para la imagen dotnet
 					#sudo docker-compose up
 
-					#original abril 2022
-					#sudo docker run --restart always --name dotnet -p $deploymentPortaux:80 -d dotnet
-					#sudo docker run --restart always -d --add-host host.docker.internal:host-gateway --name dotnet -p $deploymentPortaux:80 -d dotnet
+					#Comandos especiales
+					#export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
+					echo "= = = = = = = = = = = = = = = = = = = ="
+					#echo "IP Docker interna: ${DOCKER_HOST_IP}"
 
+					#original abril 2022
+					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 
 					#sudo docker run --restart always --rm -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
-					#sudo docker run --hostname -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
-					sudo docker run -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
 
+					#Correcto
+					#Al 30 de Junio
+					#sudo docker run --rm -d --network="host" --add-host=host.podman.internal:host-gateway -it -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
+					#sudo docker run --rm -d -it -e --network="host" --add-host=host.docker.internal:host-gateway --name dotnet -d dotnet
+
+					#sudo docker run --add-host=host.docker.internal:host-gateway  -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
+
+					#sudo docker run --restart always --network="bridge" --name dotnet -p $deploymentPortaux:80 -d dotnet
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
