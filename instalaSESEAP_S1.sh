@@ -403,8 +403,8 @@
 					echo "= = = = = = = = = = = = = = = = = = = ="
 					#echo "IP Docker interna: ${DOCKER_HOST_IP}"
 
-					#original abril 2022
-					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+					#original abril 2022 y activo al 8 d Agosto 2022
+					#sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 
 					#sudo docker run --restart always --rm -d --network host--name dotnet -p $deploymentPort:80 -d dotnet
 
@@ -416,6 +416,9 @@
 					#sudo docker run --add-host=host.docker.internal:host-gateway  -it --rm -e HOST_IP=$(ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p') --name dotnet -p $deploymentPort:80 -d dotnet
 
 					#sudo docker run --restart always --network="bridge" --name dotnet -p $deploymentPortaux:80 -d dotnet
+					
+					#ACTIVO al 8 de Agosto 2022
+					sudo docker run --name dotnet -p $deploymentPort:80 -d dotnet
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
