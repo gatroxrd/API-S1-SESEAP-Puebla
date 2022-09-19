@@ -78,17 +78,30 @@
 
 					chmod -R 777 appsettings.json
 					# E S T A B L E C I E N D O    V A L O R E S   E N   E L   A P P . S E T T I N G S    D E L    P R O Y E C T O    . N E T
-					sed -i "s/apiName/$apiName/g" appsettings.json
-					sed -i "s/clientId/$clientId/g" appsettings.json
-					sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
-					sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
-					sed -i "s/clientDescription/$clientDescription/g" appsettings.json
-					sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
-					sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
+					#sed -i "s/apiName/$apiName/g" appsettings.json
+					#sed -i "s/clientId/$clientId/g" appsettings.json
+				  	#sed -i "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
+					#sed -i "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
+					#sed -i "s/clientDescription/$clientDescription/g" appsettings.json
+					#sed -i "s/mongoUsername/$mongoUsername/g" appsettings.json
+					#sed -i "s/mongoPassword/$mongoPassword/g" appsettings.json
 					#- - - - - --  - - - - - - - - - - - - - - - - - - - - - - -
-					sed -i "s/mongoPort/$mongoPort/g" appsettings.json
-					sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
-					sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
+					#sed -i "s/mongoPort/$mongoPort/g" appsettings.json
+					#sed -i "s/mongoDatabase/$mongoDatabase/g" appsettings.json
+					#sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
+
+					#- - - - - - - - - - - - - - - - - - - - - - - -  - - - - - -
+					sudo perl -pi -e "s[apiName][$apiName]g" appsettings.json
+					sudo perl -pi -e "s[clientId][$clientId]g" appsettings.json
+					sudo perl -pi -e "s/clientScopeRead/$clientScopeReadaux/g" appsettings.json
+					sudo perl -pi -e  "s/clientScopeWrite/$clientScopeWriteaux/g" appsettings.json
+					sudo perl -pi -e  "s/clientDescription/$clientDescription/g" appsettings.json
+					sudo perl -pi -e  "s/mongoUsername/$mongoUsername/g" appsettings.json
+					sudo perl -pi -e  "s/mongoPassword/$mongoPassword/g" appsettings.json
+					#- - - - - --  - - - - - - - - - - - - - - - - - - - - - - -
+					sudo perl -pi -e  "s/mongoPort/$mongoPort/g" appsettings.json
+					sudo perl -pi -e  "s/mongoDatabase/$mongoDatabase/g" appsettings.json
+					sudo perl -pi -e  "s/mongoHostname/$mongoHostname/g" appsettings.json
 					echo -e "\e[37mArchivo appsettings.json actualizado ... Ok           \e[0m"
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
