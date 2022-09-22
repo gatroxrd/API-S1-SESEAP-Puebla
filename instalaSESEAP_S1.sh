@@ -3,7 +3,7 @@
 # Unidad de Servicios Tecnolǵicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
-#Actualizado al 06 de Septiembre 2022
+#Actualizado al 22 de Septiembre 2022
 			descargaAPINet()
 			{
 				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
