@@ -2,7 +2,7 @@
     Set-Location c:\DeclaracionesPDN\API.SESEAP\USTPD.S1
 	try
 	{
-		docker container stop $(docker container ls -q --filter name=dotnet*) | xargs docker rm
+		#docker container stop $(docker container ls -q --filter name=dotnet*) | xargs docker rm
 		docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}"|findstr "dotnet")
 	}
 	catch
