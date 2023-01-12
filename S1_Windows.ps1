@@ -2,18 +2,13 @@
     Set-Location c:\DeclaracionesPDN\API.SESEAP\USTPD.S1
 	try
 	{
-		#docker container stop $(docker container ls -q --filter name=dotnet*) | xargs docker rm
-		docker-machine stop dotnet@latest
-		Remove-Container -ContainerIdOrName --filter name=dotnet*
-		#docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}"|findstr "dotnet")
-		docker images --format='{{json .}}'|Select-String -Pattern "${dotnet}" |   ConvertFrom-Json |  ForEach-Object -process { docker rmi -f $_.ID}
-	}
-	catch
-	{
-		
-	}
-    try
-    {
+		#Deten el contenedor dotnet
+		docker stop $(docker ps -q --filter name=dotnet*)
+		# Elimina el contenedor dotnet
+		docker rm $(docker ps --filter status=exited -q)
+		#Elimina la imagen dotnet
+		docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}"|findstr "dotnet")
+		#Revisión si quedo la imagen dotnet instalada
         docker image rm dotnet@latest -f
     }
     catch
