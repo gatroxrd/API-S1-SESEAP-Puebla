@@ -3,7 +3,10 @@
 	try
 	{
 		#docker container stop $(docker container ls -q --filter name=dotnet*) | xargs docker rm
-		docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}"|findstr "dotnet")
+		docker-machine stop dotnet@latest
+		Remove-Container -ContainerIdOrName --filter name=dotnet*
+		#docker rmi $(docker images --format "{{.Repository}}:{{.Tag}}"|findstr "dotnet")
+		docker images --format='{{json .}}'|Select-String -Pattern "${dotnet}" |   ConvertFrom-Json |  ForEach-Object -process { docker rmi -f $_.ID}
 	}
 	catch
 	{
