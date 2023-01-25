@@ -16,4 +16,4 @@
         docker image rm dotnet -f
     }
     docker build -t dotnet -f Dockerfile .
-    docker run --name dotnet -p 9000:80 -d dotnet
+    docker run --restart always --name dotnet -p 9000:80 -d dotnet
