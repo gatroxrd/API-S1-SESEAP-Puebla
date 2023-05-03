@@ -1,11 +1,11 @@
-apiName=SANPEDROCHOLULA
-clientId=declaraciones_pde_sanpedrocholula
-clientScopeRead=sanpedrocholula
-clientScopeWrite=sanpedrocholula
-clientDescription=Ayuntamiento de San Pedro Cholula, Puebla
+apiName=HUAUCHINANGO
+clientId=declaraciones_pde_huauchinango
+clientScopeRead=huauchinango
+clientScopeWrite=huauchinango
+clientDescription=Ayuntamiento de Huauchinango, Puebla
 mongoUsername=declarausr
 mongoPassword=declarapsw
-mongoHostname=25.42.126.225
+mongoHostname=<dirección IP de la instancia de mongodb>
 mongoPort=27017
 mongoDatabase=declaraciones
 deploymentPort=9000
