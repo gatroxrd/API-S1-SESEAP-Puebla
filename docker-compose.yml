@@ -1,7 +1,7 @@
 version: '1'
 services:
         web:
-        container_name: API.SEA.Puebla
+        container_name: api.sea.puebla
         built: ./
         ports:
             - "27017:27017"
