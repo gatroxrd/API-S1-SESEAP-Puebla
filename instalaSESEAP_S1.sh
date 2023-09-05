@@ -126,10 +126,10 @@
 					echo "= = = = = = = = = = = = = = = = = = = ="
 
 					#ACTIVO 06 Septiembre  2022
-					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+					sudo docker run --restart always --name API.SEA.Puebla -p $deploymentPort:80 -d API.SEA.Puebla
 
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
-					sudo docker tag dotnet:latest dotnet:API_Puebla_ver.1.4
+					sudo docker tag API.SEA.Puebla:latest API.SEA.Puebla:ver.1.4
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
