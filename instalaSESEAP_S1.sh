@@ -128,6 +128,9 @@
 					#ACTIVO 06 Septiembre  2022
 					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 
+					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
+					sudo docker dotnet:latest dotnet:API_Sesea_Puebla_sep23
+
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[32m ${mongoHostname}:${deploymentPort} \033[0m"
