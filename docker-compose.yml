@@ -1,7 +1,7 @@
 version: '1'
 services:
         web:
-        container_name: dotnet
+        container_name: API.SEA.Puebla
         built: ./
         ports:
             - "27017:27017"

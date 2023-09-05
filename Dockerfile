@@ -9,7 +9,7 @@
  #Personalizando el nombre del contenedor a:
  #declaraciones-api-interconexion-puebla
  #Rehabilitado el 10 Agosto 2023 ya que el nombre de declaraciones-api-interconexion-puebla no era localizado
- ENTRYPOINT ["dotnet", "PDEPuebla.S1.PDN.dll"]
+ ENTRYPOINT ["API.SEA.Puebla", "PDEPuebla.S1.PDN.dll"]
  
  #ENTRYPOINT ["declaraciones-api-interconexion-puebla", "PDEPuebla.S1.PDN.dll"]
 
