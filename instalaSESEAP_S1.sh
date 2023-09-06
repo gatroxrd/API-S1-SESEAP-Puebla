@@ -144,7 +144,8 @@
 					#Actualiza al archivo origen en la ubicacion superior
 					cd ..
 					cp -a parametrosConfiguracion.txt ../
-					echo "= = = = = = = = = = = = = = = = = = = = Estatus contenedores Dockers"
+					echo "= = = = = = = = = = = = = = = = = = = = Estatus contenedores Dockers = = = = = = = = = = = = = = = = = = = = = "
+					echo "= El contenedor creado por esta API de interconexión Puebla se llama: api-seseap-interconexion-puebla = = = = = = = = = "
 					sudo docker ps
 
 				}
