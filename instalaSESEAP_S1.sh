@@ -153,8 +153,8 @@
 					cd ..
 					cp -a parametrosConfiguracion.txt ../
 			        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
-					echo "= = El contenedor creado por esta API de interconexión Puebla se identificará con la siguiente etiqueta :  "
-					echo "= = NAMES : " -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
+					echo "= = El contenedor creado por la API de interconexión Puebla se identificará con la siguiente etiqueta "NAMES" :  "
+					echo -e "\033[33m api-interconexion-puebla \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
 					echo "= = = = = = = = = = = = = = = = = = = = Estatus contenedores Dockers = = = = = = = = = = = = = = = = = = = = = ="
 					sudo docker ps
