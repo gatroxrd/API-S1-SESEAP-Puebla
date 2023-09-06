@@ -110,7 +110,7 @@
 					echo -e "\e[37mArchivo appsettings.json actualizado ... Ok           \e[0m"
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\e[46m       M O N T A N D O    C O M P O N E N T E     D O C K E R        \e[0m"
+					echo -e "\e[46m       C O M P O N E N T E    D O C K E R     I M A G E N    Y     C O N T E N E D O R     \e[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 
 					# M O N T A N D O   L A    I M A G E N  Y  D O C K E R   D E   M I C R O S O F T   .NET
