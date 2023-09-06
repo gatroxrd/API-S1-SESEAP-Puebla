@@ -129,15 +129,15 @@
 					#export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 
+					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
+					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
+					#pantalla inicial de la API
+					sudo docker tag dotnet:latest dotnet:ver.1.0.5
+
 					#ACTIVO 06 Septiembre  2022
 					#Se cambia el nombre del contenedor de "dotnet" a "api-interconexion-puebla" 
 					#Obsoleto 06/Septiembre/2023 sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 					sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d dotnet
-
-					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
-					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
-					#pantalla inicial de la API
-					#sudo docker tag dotnet:latest dotnet:ver.1.0.5
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
