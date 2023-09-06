@@ -130,7 +130,7 @@
 					echo "= = = = = = = = = = = = = = = = = = = ="
 
 					#ACTIVO 06 Septiembre  2022
-					sudo docker run --restart always --name api-seseap-interconexion-puebla -p $deploymentPort:80 -d dotnet
+					sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d dotnet
 
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
 					sudo docker tag dotnet:latest dotnet:ver.11.08.23
