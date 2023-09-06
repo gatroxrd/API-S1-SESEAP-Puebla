@@ -1,9 +1,11 @@
 #!/bin/bash
 # Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla
-# Unidad de Servicios Tecnolǵicos y Plataforma Digital
+# Unidad de Servicios Tecnológicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
-#Actualizado al 22 de Septiembre 2022
+# 222-9472130 ext. 1009
+# Equipo de desarrollo USTPD
+# Actualizado al 06 de Septiembre 2023
 			descargaAPINet()
 			{
 				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
