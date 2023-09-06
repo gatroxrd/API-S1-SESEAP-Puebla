@@ -137,9 +137,9 @@
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
 					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
 					#pantalla inicial de la API
-					#sudo docker tag dotnet:latest dotnet:ver.1.0.5
+					sudo docker tag dotnet:latest dotnet:ver.1.0.5
 					#Se elimina la otra imagen original
-					#sudo docker rm -f dotnet:latest
+					sudo docker rmi -f dotnet:latest
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
@@ -158,9 +158,10 @@
 					echo "= = El contenedor creado por la API de interconexión Puebla se identificará con la siguiente etiqueta 'NAMES' :  "
 					echo -e "                                     \033[33m api-interconexion-puebla \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
-					echo "= = = = = = = = = = = = = = = = Estatus de los contenedores e imagenes Dockers = = = = = = = = = = = = = = = = ="
-					sudo docker ps 
-					sudo docker images
+					echo "= = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = = "
+					sudo sudo docker ps -a 
+					echo "= = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = "					
+					sudo docker images ls
 
 				}
 
