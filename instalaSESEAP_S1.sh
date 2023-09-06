@@ -64,7 +64,7 @@
 					echo -e "\e[42m Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla - SESEAP                                              \e[0m"
 					echo -e "\e[42m Unidad de Servicios Tecnológicos y Plataforma Digital (USTPD)              Versión al 06 Septiembre de 2023          \e[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\e[45m O B T E N I E N D O   C O M P O N E N T E    V I S U A L   E S T U D I O   . N E T    S E S E A Puebla   \e[0m"
+					echo -e "\e[45m O B T E N I E N D O   C O M P O N E N T E    V I S U A L   E S T U D I O   . N E T    S E S E A - Puebla   \e[0m"
 					echo ""
 					echo -e "\e[37mIniciando descarga del proyecto .NET del repositorio GitHub de SESEAP - USTPD ... Ok \e[0m"
 					echo -e "\033[37mDescomprimiendo archivos .NET dentro de API.S1.SESEAP ... Ok \033[0m"
@@ -91,7 +91,7 @@
 					#sed -i "s/mongoHostname/$mongoHostname/g" appsettings.json
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\e[45m C O N F I G U R A N D O    C O M P O N E N T E    A P I     S E S E A Puebla  \e[0m"
+					echo -e "\e[45m C O N F I G U R A N D O    C O M P O N E N T E    A P I     S E S E A - Puebla  \e[0m"
 
 					#- - - - - - - - - - - - - - - - - - - - - - - -  - - - - - -
 					sudo perl -pi -e "s[apiName][$apiName]g" appsettings.json
@@ -110,10 +110,10 @@
 					echo -e "\e[37mArchivo appsettings.json actualizado ... Ok           \e[0m"
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\e[46m C O M P O N E N T E    D O C K E R  \e[0m"
+					echo -e "\e[46m       M O N T A N D O    C O M P O N E N T E     D O C K E R        \e[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 
-					# M O N T A N D O   L A    I M A G E N  Y D O C K E R   D E   M I C R O S O F T   .NET
+					# M O N T A N D O   L A    I M A G E N  Y  D O C K E R   D E   M I C R O S O F T   .NET
 					echo -e "\e[33mIniciando despliegue de la API Microsoft .NET\e[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[33mEliminando imagen previa del contenedor Docker llamada:\033[0m"
