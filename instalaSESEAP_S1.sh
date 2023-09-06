@@ -114,7 +114,8 @@
 					echo -e "\e[33mIniciando despliegue de la API Microsoft .NET\e[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  1  I M A G E N = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[33mEliminando imagen previa del contenedor Docker llamada:\033[0m"
-					sudo docker rm -f dotnet
+					#sudo docker rm -f dotnet
+					sudo docker rm -f api-seseap-interconexion-puebla
 					echo "= = = = = = = = = = = = = = = = = = = = = = = P A S O  2  D O C K E R = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[33mConstruyendo la imagen a partir del proyecto .NET\033[0m"
 					sudo docker build -t dotnet -f Dockerfile .
