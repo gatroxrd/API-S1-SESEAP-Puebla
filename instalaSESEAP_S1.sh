@@ -127,7 +127,7 @@
 
 					#Comandos especiales
 					#export DOCKER_HOST_IP=$(route -n | awk '/UG[ \t]/{print $2}')
-					echo "= = = = = = = = = = = = = = = = = = = ="
+					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 
 					#ACTIVO 06 Septiembre  2022
 					#Se cambia el nombre del contenedor de "dotnet" a "api-interconexion-puebla" 
@@ -143,7 +143,7 @@
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo -e "\033[32m ${mongoHostname}:${deploymentPort} \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-					echo -e "\e[33m                                F  E  L  I  C  I  D  A  D  E  S                                 \e[0m"
+					echo -e "\e[46m                                F  E  L  I  C  I  D  A  D  E  S                                 \e[0m"
 					echo -e "\033[32m API de conexión de ${clientDescription} con SESEAPuebla fue configurada \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo "Soporte técnico y sugerencias al correo : "
@@ -153,8 +153,8 @@
 					cd ..
 					cp -a parametrosConfiguracion.txt ../
 			        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
-					echo "= = El contenedor creado por esta API de interconexión Puebla se identificará con las siguientes etiquetas :  "
-					echo "= = NAMES : api-seseap-interconexion-puebla "
+					echo "= = El contenedor creado por esta API de interconexión Puebla se identificará con la siguiente etiqueta :  "
+					echo "= = NAMES : " -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
 					echo "= = = = = = = = = = = = = = = = = = = = Estatus contenedores Dockers = = = = = = = = = = = = = = = = = = = = = ="
 					sudo docker ps
