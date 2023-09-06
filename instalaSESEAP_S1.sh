@@ -161,7 +161,7 @@
 					echo "= = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = = "
 					sudo sudo docker ps -a 
 					echo "= = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = "					
-					sudo docker images ls
+					sudo docker images
 
 				}
 
