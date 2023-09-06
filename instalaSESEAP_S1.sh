@@ -149,7 +149,7 @@
 					echo -e "\033[32m API de conexión de ${clientDescription} con SESEAPuebla fue configurada \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo "Soporte técnico y sugerencias al correo : "
-					echo "puebladeclara@seseap.puebla.gob.mx"
+					echo -e "                                     \033[33m puebladeclara@seseap.puebla.gob.mx | 2229472130 ext. 1009 \033[0m"					
 
 					#Actualiza al archivo origen en la ubicacion superior
 					cd ..
