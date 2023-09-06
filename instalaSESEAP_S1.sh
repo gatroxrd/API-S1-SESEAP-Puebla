@@ -137,7 +137,7 @@
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
 					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
 					#pantalla inicial de la API
-					sudo docker tag dotnet:latest dotnet:ver.1.0.5
+					sudo docker tag dotnet:latest dotnet:api.ver.1.0.5
 					#Se elimina la otra imagen original
 					sudo docker rmi -f dotnet:latest
 
