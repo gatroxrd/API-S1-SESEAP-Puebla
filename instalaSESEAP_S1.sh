@@ -145,7 +145,9 @@
 					cd ..
 					cp -a parametrosConfiguracion.txt ../
 					echo "= = = = = = = = = = = = = = = = = = = = Estatus contenedores Dockers = = = = = = = = = = = = = = = = = = = = = "
-					echo "= El contenedor creado por esta API de interconexión Puebla se llama: api-seseap-interconexion-puebla = = = = = = = = = "
+					echo "= = El contenedor creado por esta API de interconexión Puebla se identificará con las siguientes etiquetas : = = "
+					echo "= = NAMES : api-seseap-interconexion-puebla = ="
+					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
 					sudo docker ps
 
 				}
