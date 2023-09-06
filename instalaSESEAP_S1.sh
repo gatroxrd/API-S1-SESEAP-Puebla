@@ -133,7 +133,7 @@
 					sudo docker run --restart always --name api-seseap-interconexion-puebla -p $deploymentPort:80 -d dotnet
 
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
-					sudo docker tag api-seseap-interconexion-puebla api-seseap-interconexion-puebla:ver.1.4
+					sudo docker tag dotnet dotnet:ver.1.4
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
