@@ -158,9 +158,9 @@
 					echo "= = El contenedor creado por la API de interconexión Puebla se identificará con la siguiente etiqueta 'NAMES' :  "
 					echo -e "                                     \033[33m api-interconexion-puebla \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
-					echo "= = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = = "
+					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = =  \033[0m"
 					sudo sudo docker ps -a 
-					echo "= = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = "					
+					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = =  \033[0m"				
 					sudo docker images
 
 				}
