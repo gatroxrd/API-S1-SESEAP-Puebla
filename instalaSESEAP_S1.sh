@@ -166,6 +166,7 @@
 					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = =  \033[0m"
 					sudo sudo docker ps -a 
 					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = =  \033[0m"				
+					sudo docker image prune
 					sudo docker images
 
 				}
