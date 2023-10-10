@@ -1,11 +1,9 @@
 #!/bin/bash
 # Secretaría Ejecutiva del Sistema Estatal Anticorrupción Puebla
-# Unidad de Servicios Tecnológicos y Plataforma Digital
+# Unidad de Servicios Tecnolǵicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
-# 222-9472130 ext. 1009
-# Equipo de desarrollo USTPD
-# Actualizado al 06 de Septiembre 2023
+#Actualizado al 22 de Septiembre 2022
 			descargaAPINet()
 			{
 				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
@@ -102,7 +100,12 @@
 					sudo perl -pi -e  "s[clientScopeWrite][$clientScopeWriteaux]g" appsettings.json
 					sudo perl -pi -e  "s[clientDescription][$clientDescription]g" appsettings.json
 					sudo perl -pi -e  "s[mongoUsername][$mongoUsername]g" appsettings.json
-					sudo perl -pi -e  "s[mongoPassword][$mongoPassword]g" appsettings.json
+                                       	#- - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - 
+					#sudo perl -pi -e  "s[mongoPassword][$mongoPassword]g" appsettings.json
+					#cadena="$4dm1n1$trad0r$"
+				        #cadena="$mongoPassword"
+					variable=$(mi_caracter_especial $mongoPassword)
+					sudo perl -pi -e 's[mongoPassword][$variable]g' appsettings.json
 					#- - - - - --  - - - - - - - - - - - - - - - - - - - - - - -
 					sudo perl -pi -e  "s[mongoPort][$mongoPort]g" appsettings.json
 					sudo perl -pi -e  "s[mongoDatabase][$mongoDatabase]g" appsettings.json
@@ -151,12 +154,12 @@
 					echo -e "\033[32m API de conexión de ${clientDescription} con SESEAPuebla fue configurada \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 					echo "Soporte técnico y sugerencias al correo : "
-					echo -e "                                     \033[33m puebladeclara@seseap.puebla.gob.mx | 2229472130 ext. 1009 \033[0m"					
+					echo "puebladeclara@seseap.puebla.gob.mx"
 
 					#Actualiza al archivo origen en la ubicacion superior
 					cd ..
 					cp -a parametrosConfiguracion.txt ../
-			        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
+         			        echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
 					echo "= = El contenedor creado por la API de interconexión Puebla se identificará con la siguiente etiqueta 'NAMES' :  "
 					echo -e "                                     \033[33m api-interconexion-puebla \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
@@ -166,6 +169,48 @@
 					sudo docker images
 
 				}
+
+				mi_caracter_especial() 
+				{
+					  # Argumentos
+					  cadena=$1
+					  #echo "Cadena original : $1"
+					  subcadena="]g"
+                                          reemplazo=""
+                                          cadena="${cadena/$subcadena/$reemplazo}"
+					  #echo "Cadena sin caracteres ultimos: $cadena"
+                                          cadenaSalida=""
+					  # Iterador
+					  local i=0
+					  # Bucle para recorrer la cadena caracter por caracter
+					  while [ $i -lt ${#cadena} ];
+					      do
+					         #Obtener el caracter actual
+					         caracter=${cadena:$i:1}
+                                                 #echo "- - Posicion entrada : $i"
+					         #Comprobar si el caracter es especial
+					         if [[ $caracter =~ "$" ]];
+						   then
+					                #El caracter es especial
+					                #echo "- - - Caracter especial"
+							cadenaSalida="$cadenaSalida$caracter"
+                                                        #echo "$cadenaSalida"
+						        #echo "Atención: La contraseña posee el caracter especial de signo de pesos"
+                                                   else
+                                                        #echo "- - - Caracter normal"
+                                                        cadenaSalida="$cadenaSalida$caracter"
+							#echo "$cadenaSalida"
+                                                 fi
+					         #Incrementar el iterador
+					         i=$((i+1))
+                                                 #echo "- Posicion siguiente ciclo : $i"
+					  done
+					  #El caracter no es especial
+					  echo "Cadena salida final desde la función de análisis : $cadenaSalida"
+ 					  sed -i 's/mongoPassword/'$cadenaSalida'/g' appsettings.json
+					  return  1
+				}
+
 
 		#Ejecución del script principal # # # # # # # # # # # # # # # # # # # #
 		#
