@@ -3,7 +3,7 @@
 # Unidad de Servicios Tecnolǵicos y Plataforma Digital
 # Dudas o sugerencias al email
 # puebladeclara@seseap.puebla.gob.mx
-#Actualizado al 22 de Septiembre 2022
+#Actualizado al 10 de Octubre de 2023  --> Se implementa el manejo del caracter $ en el valor del password
 			descargaAPINet()
 			{
 				#Instalador de desempaquetador del fuente de la aPI Microsoft .NET
