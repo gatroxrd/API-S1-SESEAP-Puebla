@@ -138,7 +138,7 @@
 					#Se cambia el nombre del contenedor de "dotnet" a "api-interconexion-puebla" 
 					#Obsoleto 06/Septiembre/2023 sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
 					#sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d dotnet
-					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+					sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d api-interconexion-puebla
 
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
 					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
