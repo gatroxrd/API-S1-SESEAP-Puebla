@@ -111,7 +111,7 @@
 					sudo perl -pi -e  "s[mongoDatabase][$mongoDatabase]g" appsettings.json
 					sudo perl -pi -e  "s[mongoHostname][$mongoHostname]g" appsettings.json
 					#- - - - - - Actualizando el campo VPN - - - -
-					sudo perl -pi -e  "s[vpn][$Vpn]g" appsettings.json					
+					sudo perl -pi -e  "s[vpn][$vpn]g" appsettings.json					
 					echo -e "\e[37mArchivo appsettings.json actualizado ... Ok           \e[0m"
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
