@@ -164,10 +164,10 @@
 					echo -e "                                     \033[33m api-interconexion-puebla \033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = "
 					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = Estatus de los contenedores Dockers = = = = = = = = = = = = = = = = = = =  \033[0m"
-					#sudo sudo docker ps -a 
+					sudo sudo docker ps -a 
 					echo -e "\033[32m = = = = = = = = = = = = = = = = = = = = Estatus de las imagenes Dockers = = = = = = = = = = = = = = = = = = = =  \033[0m"				
-					#sudo docker image prune
-					#sudo docker images
+					sudo docker image prune
+					sudo docker images
 
 				}
 
