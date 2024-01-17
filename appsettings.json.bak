@@ -1,0 +1,28 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+  "IdentityServerParameters": {
+    "ServiceUrl": "http://192.168.0.25:5000",
+    "AuthorizationUrl": "http://192.168.0.25:5000/connect/authorize",
+    "ApiName": "BUAP",
+    "ClientId": "declaraciones_pde_buap",
+    "Scopes": {
+      "read": "read:buap",
+      "write": "write:buap"
+    }
+  },
+  "DeclaracionesConnection": {
+    "UserName": "declarausr",
+    "Password": "declarapsw",
+    "HostName": "192.168.10.15",
+    "Port": "27017",
+    "DatabaseName": "declaraciones"
+  },
+  "EntePublico": "Benemérita Universidad Autónoma de Puebla"
+}
