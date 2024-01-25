@@ -27,8 +27,18 @@
 				clear
 			}
 
+			limpiaContenedores()
+			{
+				clear
+				sudo docker stop $(sudo docker ps -aq)
+				sudo docker rm $(sudo docker ps -aq) 
+				sudo docker system prune -a
+				clear
+			}
+
 			versionNoGraficaPlana()
 				{
+					#limpiaContenedores
 					# Crea Carpeta principal de despliegue SESEAP- - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - -
 							cd .
 							sudo rm -rf SESEAP
@@ -111,7 +121,7 @@
 					sudo perl -pi -e  "s[mongoDatabase][$mongoDatabase]g" appsettings.json
 					sudo perl -pi -e  "s[mongoHostname][$mongoHostname]g" appsettings.json
 					#- - - - - - Actualizando el campo VPN - - - -
-					sudo perl -pi -e  "s[vpn][$vpn]g" appsettings.json					
+					sudo perl -pi -e  "s["vpn": true]["Vpn": $vpn]g" appsettings.json					
 					echo -e "\e[37mArchivo appsettings.json actualizado ... Ok           \e[0m"
 
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
@@ -137,14 +147,25 @@
 					#ACTIVO 06 Septiembre  2022
 					#Se cambia el nombre del contenedor de "dotnet" a "api-interconexion-puebla" 
 					#Obsoleto 06/Septiembre/2023 sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
-					sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d dotnet
+					#sudo docker run --restart always --name api-interconexion-puebla -p $deploymentPort:80 -d dotnet
+					sudo docker run --restart always --name dotnet -p $deploymentPort:80 -d dotnet
+
+					sudo docker rename dotnet api-interconexion-puebla
 
 					#ACTIVO 05 Septiembre  2023 Renombrando a la imagen dotnet - - > API Seseap
 					#Se agrega para agregar la versión actual a la imagen del contenedor recien creado, esta versión es la misma que esta definida en la
 					#pantalla inicial de la API
-					sudo docker tag dotnet:latest dotnet:api.1.0.5
+					if [ ! "$(docker inspect dotnet:latest)" ]; then
+  						sudo docker tag dotnet:latest dotnet:api.1.0.5
+					fi
+
+					#sudo docker tag dotnet:latest dotnet:api.1.0.5
 					#Se elimina la otra imagen original
-					sudo docker rmi -f dotnet:latest
+					if [ ! "$(docker inspect dotnet:latest)" ]; then
+  						sudo docker rmi -f dotnet:latest
+					fi
+
+					#sudo docker rmi -f dotnet:latest
 
 					echo -e "\033[33mAbra cualquier navegador aquí o en un equipo de su red local con la url para su nueva API:\033[0m"
 					echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
